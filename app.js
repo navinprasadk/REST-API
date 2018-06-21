@@ -2,15 +2,20 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+
+mongoose.connect('mongodb+srv://navin:' + process.env.MONGO_ATLAS_PW + 
+'@node-rest-api-0gacg.mongodb.net/test?retryWrites=true');
 
 // Morgan is used for logging the request details
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+// CORS
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
