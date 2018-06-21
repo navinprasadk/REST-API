@@ -10,6 +10,8 @@ const orderRoutes = require('./api/routes/orders');
 mongoose.connect('mongodb+srv://navin:' + process.env.MONGO_ATLAS_PW + 
 '@node-rest-api-0gacg.mongodb.net/test?retryWrites=true');
 
+mongoose.Promise = global.Promise;
+
 // Morgan is used for logging the request details
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
