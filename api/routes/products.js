@@ -18,7 +18,7 @@ router.get("/", (req, res, next) => {
                     _id: doc._id,
                     request: {
                         type: 'GET',
-                        url: 'http://localhost:3000/' + doc._id
+                        url: 'http://localhost:3000/products/' + doc._id
                     }
                 }
             })
@@ -53,7 +53,6 @@ router.post("/", (req, res, next) => {
                 type: 'GET',
                 url: 'http://localhost:3000/products/' + result._id
             }
-
         }
       });
     })
@@ -118,7 +117,6 @@ router.patch("/:productId", (req, res, next) => {
         });
     ;
 });
-
 
 // router.patch("/:productId", (req, res, next) => {
 //     const id = req.params.productId;
